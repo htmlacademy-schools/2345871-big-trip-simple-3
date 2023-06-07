@@ -97,7 +97,7 @@ const flightOffers = [{
   id: 1,
   title: 'Food order',
   price: 70
-},{
+}, {
   id: 7,
   title: 'Drinks order',
   price: 50
@@ -185,7 +185,7 @@ const SortType = {
   EVENT: 'event',
   TIME: 'time',
   PRICE: 'price',
-  OFFERS: 'offers'
+  OFFER: 'offer'
 };
 
 export {pointTypes, variousDates, offersByType, getOffersByType, descrText, cities, FilterType, SortType};
