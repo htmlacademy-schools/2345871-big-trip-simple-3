@@ -29,12 +29,12 @@ export default class WaypointPresenter {
   }
 
   init(waypoint, destinations, offers) {
-    const prevWaypointComponent = this.#waypointComponent;
-    const prevEditFormComponent = this.#editFormComponent;
-
     this.#waypoint = waypoint;
     this.#destinations = destinations;
     this.#offers = offers;
+
+    const prevWaypointComponent = this.#waypointComponent;
+    const prevEditFormComponent = this.#editFormComponent;
 
     this.#waypointComponent = new WaypointView({
       oneWaypoint: this.#waypoint,
@@ -166,4 +166,5 @@ export default class WaypointPresenter {
       waypoint,
     );
   };
+
 }

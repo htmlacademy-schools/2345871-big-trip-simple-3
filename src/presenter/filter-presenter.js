@@ -14,6 +14,7 @@ export default class FilterPresenter {
     this.#filterContainer = filterContainer;
     this.#modelFilter = modelFilter;
     this.#modelWaypoints = modelWaypoints;
+
     this.#modelWaypoints.addObserver(this.#handleModelEvent);
     this.#modelFilter.addObserver(this.#handleModelEvent);
   }
@@ -30,15 +31,18 @@ export default class FilterPresenter {
   init() {
     const filters = this.filters;
     const prevFilterComponent = this.#filterComponent;
+
     this.#filterComponent = new Filters({
       filters,
       currentFilterType: this.#modelFilter.filter,
       onFilterTypeChange: this.#handleFilterTypeChange
     });
+
     if (prevFilterComponent === null) {
       render(this.#filterComponent, this.#filterContainer);
       return;
     }
+
     replace(this.#filterComponent, prevFilterComponent);
     remove(prevFilterComponent);
   }
@@ -51,6 +55,7 @@ export default class FilterPresenter {
     if (this.#modelFilter.filter === filterType) {
       return;
     }
+
     this.#modelFilter.setFilter(UpdateType.MAJOR, filterType);
   };
 }

@@ -6,9 +6,9 @@ import {pointTypes} from '../const.js';
 import he from 'he';
 
 const BLANK_WAYPOINT = {
-  basePrice: 500,
-  dateFrom: '2077-07-17T17:17:17.375Z',
-  dateTo: '2088-07-17T17:17:17.375Z',
+  basePrice: 50,
+  dateFrom: '2000-01-01T00:00:00.375Z',
+  dateTo: '2000-01-01T00:00:01.375Z',
   destination: undefined,
   id: 0,
   offersIDs: [],
@@ -72,13 +72,16 @@ function createEditFormTemplate(isEditForm, oneWaypoint, offers, destinations) {
           <img class="event__type-icon" width="17" height="17" src="img/icons/${oneWaypoint.type}.png" alt="${oneWaypoint.type} icon">
         </label>
         <input class="event__type-toggle  visually-hidden" id="event-type-toggle-${oneWaypoint.id}" type="checkbox" ${(oneWaypoint.isDisabled) ? 'disabled' : ''}>
+
         <div class="event__type-list">
           <fieldset class="event__type-group">
             <legend class="visually-hidden">Event type</legend>
+
             ${createEventTypeListTemplate(oneWaypoint.type, oneWaypoint.id)}
           </fieldset>
         </div>
       </div>
+
       <div class="event__field-group  event__field-group--destination">
         <label class="event__label  event__type-output" for="event-destination-${oneWaypoint.id}">
           ${makeFirstLetterUpperCase(oneWaypoint.type)}
@@ -88,6 +91,7 @@ function createEditFormTemplate(isEditForm, oneWaypoint, offers, destinations) {
           ${createDetinationListTemplate(destinations)}
         </datalist>
       </div>
+
       <div class="event__field-group  event__field-group--time">
         <label class="visually-hidden" for="event-start-time-${oneWaypoint.id}">From</label>
         <input class="event__input  event__input--time" id="event-start-time-${oneWaypoint.id}" type="text" name="event-start-time" value="${getDateYears(oneWaypoint.dateFrom)}" ${(oneWaypoint.isDisabled) ? 'disabled' : ''}>
@@ -95,6 +99,7 @@ function createEditFormTemplate(isEditForm, oneWaypoint, offers, destinations) {
         <label class="visually-hidden" for="event-end-time-${oneWaypoint.id}">To</label>
         <input class="event__input  event__input--time" id="event-end-time-${oneWaypoint.id}" type="text" name="event-end-time" value="${getDateYears(oneWaypoint.dateFrom)}" ${(oneWaypoint.isDisabled) ? 'disabled' : ''}>
       </div>
+
       <div class="event__field-group  event__field-group--price">
         <label class="event__label" for="event-price-${oneWaypoint.id}">
           <span class="visually-hidden">Price</span>
@@ -102,6 +107,7 @@ function createEditFormTemplate(isEditForm, oneWaypoint, offers, destinations) {
         </label>
         <input class="event__input  event__input--price" id="event-price-${oneWaypoint.id}" type="number" name="event-price" value="${oneWaypoint.basePrice}" autocomplete="off" min="0" max="7777777" ${(oneWaypoint.isDisabled) ? 'disabled' : ''}">
       </div>
+
       <button class="event__save-btn  btn  btn--blue" type="submit"${(oneWaypoint.isDisabled) ? 'disabled' : ''}>${(oneWaypoint.isSaving) ? 'Saving...' : 'Save'}</button>
       <button class="event__reset-btn" type="reset" ${(oneWaypoint.isDisabled) ? 'disabled' : ''}>${getTitle(isEditForm, oneWaypoint.isDeleting)}</button>
        ${(isEditForm) ? `
@@ -117,6 +123,7 @@ function createEditFormTemplate(isEditForm, oneWaypoint, offers, destinations) {
             ${createOffersTemplate(oneWaypoint.offersIDs, curTypeOffers, oneWaypoint.id, oneWaypoint.isDisabled)}
         </div>
       </section>
+
       <section class="event__section  event__section--destination  ${(!itemDest) ? 'visually-hidden' : ''}">
         <h3 class="event__section-title  event__section-title--destination">Destination</h3>
         <p class="event__destination-description">${(itemDest) ? itemDest.description : ''}</p>
@@ -178,7 +185,9 @@ export default class EditForm extends AbstractStatefulView {
     this.#handleSubmit = onSubmit;
     this.#handleRollUp = onRollUpButton;
     this.#handleDeleteClick = onDeleteClick;
+
     this._restoreHandlers();
+
   }
 
   _restoreHandlers() {
@@ -193,14 +202,17 @@ export default class EditForm extends AbstractStatefulView {
     }
     this.#setFromDatePicker();
     this.#setToDatePicker();
+
   }
 
   removeElement() {
     super.removeElement();
+
     if (this.#fromDatepicker) {
       this.#fromDatepicker.destroy();
       this.#fromDatepicker = null;
     }
+
     if (this.#toDatepicker) {
       this.#toDatepicker.destroy();
       this.#toDatepicker = null;
@@ -227,6 +239,7 @@ export default class EditForm extends AbstractStatefulView {
     this.#handleRollUp();
   };
 
+
   #fromDateChangeHandler = ([userDate]) => {
     if (userDate) {
       this._setState({
@@ -235,6 +248,7 @@ export default class EditForm extends AbstractStatefulView {
       this.#toDatepicker.set('minDate', userDate);
     }
   };
+
 
   #toDateChangeHandler = ([userDate]) => {
     if (userDate) {

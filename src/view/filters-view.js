@@ -35,6 +35,7 @@ export default class Filters extends AbstractView {
     this.#filters = filters;
     this.#currentFilter = currentFilterType;
     this.#handleFilterTypeChange = onFilterTypeChange;
+
     this.element.addEventListener('change', this.#filterTypeChangeHandler);
   }
 
