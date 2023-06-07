@@ -4,15 +4,15 @@ import ModelOffers from './model/model-offers';
 import ModelDestinations from './model/model-destinations';
 import ModelFilters from './model/model-filter.js';
 import FilterPresenter from './presenter/filter-presenter.js';
-import {render} from './render.js';
 import NewWaypointButton from './view/new-waypoint-button-view.js';
 import WaypointsApiService from './waypoints-api-service.js';
+import {render} from './render.js';
 
 const siteHeaderElement = document.querySelector('.trip-controls__filters');
 const container = document.querySelector('.trip-events');
 const placeForButton = document.querySelector('.trip-main');
 
-const AUTHORIZATION = 'Basic sgkdajgskdas7757';
+const AUTHORIZATION = 'Basic polikek100500';
 const END_POINT = 'https://18.ecmascript.pages.academy/big-trip';
 
 const waypointsApiService = new WaypointsApiService(END_POINT, AUTHORIZATION);
@@ -52,6 +52,7 @@ function handleNewTaskButtonClick() {
 
 filterPresenter.init();
 boardPresenter.init();
+
 modelWaypoints.init()
   .finally(() => {
     render(newWaypointButtonComponent, placeForButton);

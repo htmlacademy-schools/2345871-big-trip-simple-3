@@ -6,7 +6,7 @@ import {pointTypes} from '../const.js';
 import he from 'he';
 
 const BLANK_WAYPOINT = {
-  basePrice: 50,
+  basePrice: 10,
   dateFrom: '2000-01-01T00:00:00.375Z',
   dateTo: '2000-01-01T00:00:01.375Z',
   destination: undefined,
@@ -197,9 +197,11 @@ export default class EditForm extends AbstractStatefulView {
     this.element.querySelector('.event__input--price').addEventListener('input', this.#priceInputHandler);
     this.element.querySelector('.event__available-offers').addEventListener('change', this.#offersHandler);
     this.element.querySelector('.event__reset-btn').addEventListener('click', this.#formDeleteClickHandler);
+
     if (this.#isEditForm) {
       this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#rollUpButtonHandler);
     }
+
     this.#setFromDatePicker();
     this.#setToDatePicker();
 
