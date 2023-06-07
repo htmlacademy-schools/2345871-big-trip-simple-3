@@ -29,14 +29,6 @@ const filter = {
 };
 
 export {
-  getDateWithoutT,
-  getDateDayAndMo,
-  getDateWithT,
-  getTime,
-  getItemFromItemsById,
-  getDateYears,
-  isEsc,
-  makeFirstLetterUpperCase,
-  isDatesEqual,
-  filter
+  getDateWithoutT, getDateDayAndMo, getDateWithT, getTime, getItemFromItemsById,
+  getDateYears, isEsc, makeFirstLetterUpperCase, isDatesEqual, filter
 };
