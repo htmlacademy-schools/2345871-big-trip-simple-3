@@ -1,4 +1,4 @@
-import {getDateDayAndMo, getDateWithoutT, getDateWithT, getTime, getItemFromItemsById} from '../utils/utils.js';
+import {getDateDayAndMo, getDateWithoutT, getDateWithT, getTime, getItemFromItemsById} from '../utils.js';
 import AbstractView from '../framework/view/abstract-view.js';
 import he from 'he';
 
@@ -16,7 +16,6 @@ function createOffersTemplate(selectedOffersIDs, offers, type) {
 
 function createWaypointTemplate(oneWaypoint, destinations, offers) {
   const itemDest = getItemFromItemsById(destinations, oneWaypoint.destination);
-
   return (
     `<li class="trip-events__item">
     <div class="event">
@@ -59,6 +58,7 @@ export default class WaypointView extends AbstractView {
     this.#handleClick = onClick;
     this.#offers = offers;
     this.#destinations = destinations;
+
     this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#clickHandler);
   }
 

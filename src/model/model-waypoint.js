@@ -57,11 +57,9 @@ export default class ModelWaypoint extends Observable {
 
   async deleteWaypoint(updateType, update) {
     const index = this.#waypoints.findIndex((waypont) => waypont.id === update.id);
-
     if (index === -1) {
       throw new Error('Can\'t delete unexisting waypoint');
     }
-
     try {
       await this.#waypointsApiService.deleteWaypoint(update);
       this.#waypoints = [
@@ -82,7 +80,6 @@ export default class ModelWaypoint extends Observable {
       offersIDs: waypoint['offers'],
       basePrice: waypoint['base_price'],
     };
-
     delete adaptedWaypoint['date_from'];
     delete adaptedWaypoint['date_to'];
     delete adaptedWaypoint['base_price'];

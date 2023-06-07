@@ -13,6 +13,7 @@ function createNoWaypoitsMessageTemplate(filterType) {
 
 export default class NoWaypointMessage extends AbstractView {
   #filterType = null;
+
   constructor({filterType}) {
     super();
     this.#filterType = filterType;

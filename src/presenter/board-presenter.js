@@ -7,8 +7,8 @@ import {FilterType, SortType, UpdateType, UserAction} from '../const.js';
 import NewWaypointPresenter from './new-waypoint-presenter.js';
 import LoadingView from '../view/loading-view.js';
 import UiBlocker from '../framework/ui-blocker/ui-blocker.js';
-import {sorts} from '../utils/sort.js';
-import {filter} from '../utils/utils.js';
+import {sorts} from '../sort.js';
+import {filter} from '../utils.js';
 
 const TimeLimit = {
   LOWER_LIMIT: 350,
@@ -22,7 +22,6 @@ export default class BoardPresenter {
   #filterType = FilterType.EVERYTHING;
   #loadingComponent = new LoadingView();
   #isLoading = true;
-
   #uiBlocker = new UiBlocker({
     lowerLimit: TimeLimit.LOWER_LIMIT,
     upperLimit: TimeLimit.UPPER_LIMIT
@@ -43,11 +42,13 @@ export default class BoardPresenter {
     this.#modelOffers = modelOffers;
     this.#modelDestinations = modelDestinations;
     this.#modelFilter = modelFilter;
+
     this.#newWaypointPresenter = new NewWaypointPresenter({
       waypointListContainer: this.#waypointListComponent.element,
       onDataChange: this.#handleViewAction,
       onDestroy: onNewWaypointDestroy
     });
+
     this.#waypointsModel.addObserver(this.#handleModelEvent);
     this.#modelFilter.addObserver(this.#handleModelEvent);
   }
@@ -129,6 +130,7 @@ export default class BoardPresenter {
     this.#renderWaypointsList(waypoints);
   }
 
+
   #renderLoading() {
     render(this.#loadingComponent, this.#boardContainer, RenderPosition.AFTERBEGIN);
   }
@@ -153,7 +155,6 @@ export default class BoardPresenter {
           this.#waypointPresenter.get(update.id).setAborting();
         }
         break;
-
       case UserAction.UPDATE_WAYPOINT:
         this.#waypointPresenter.get(update.id).setSaving();
         try {

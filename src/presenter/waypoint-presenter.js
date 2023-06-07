@@ -1,7 +1,7 @@
 import {render, replace, remove} from '../framework/render.js';
 import WaypointView from '../view/waypoint-view.js';
 import EditForm from '../view/edit-form-view.js';
-import {isDatesEqual, isEsc} from '../utils/utils.js';
+import {isDatesEqual, isEsc} from '../utils.js';
 import {UpdateType, UserAction} from '../const.js';
 
 const Mode = {
@@ -29,12 +29,12 @@ export default class WaypointPresenter {
   }
 
   init(waypoint, destinations, offers) {
-    const prevWaypointComponent = this.#waypointComponent;
-    const prevEditFormComponent = this.#editFormComponent;
-
     this.#waypoint = waypoint;
     this.#destinations = destinations;
     this.#offers = offers;
+
+    const prevWaypointComponent = this.#waypointComponent;
+    const prevEditFormComponent = this.#editFormComponent;
 
     this.#waypointComponent = new WaypointView({
       oneWaypoint: this.#waypoint,
@@ -166,4 +166,5 @@ export default class WaypointPresenter {
       waypoint,
     );
   };
+
 }

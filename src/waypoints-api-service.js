@@ -32,8 +32,10 @@ export default class WaypointsApiService extends ApiService {
     });
 
     const parsedResponse = await ApiService.parseResponse(response);
+
     return parsedResponse;
   }
+
 
   async addWaypoint(waypoint) {
     const response = await this._load({

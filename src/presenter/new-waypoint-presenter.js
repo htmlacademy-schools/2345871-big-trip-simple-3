@@ -2,13 +2,15 @@ import {render, RenderPosition} from '../render.js';
 import {UpdateType, UserAction} from '../const.js';
 import EditForm from '../view/edit-form-view.js';
 import {remove} from '../framework/render.js';
-import {isEsc} from '../utils/utils.js';
+import {isEsc} from '../utils.js';
+
 
 export default class NewWaypointPresenter {
   #handleDataChange = null;
   #handleDestroy = null;
   #waypointListContainer = null;
   #waypointEditComponent = null;
+
   constructor({waypointListContainer, onDataChange, onDestroy}) {
     this.#waypointListContainer = waypointListContainer;
     this.#handleDataChange = onDataChange;
@@ -30,6 +32,7 @@ export default class NewWaypointPresenter {
 
     render(this.#waypointEditComponent, this.#waypointListContainer,
       RenderPosition.AFTERBEGIN);
+
     document.body.addEventListener('keydown', this.#ecsKeyDownHandler);
   }
 
@@ -56,11 +59,15 @@ export default class NewWaypointPresenter {
     if (this.#waypointEditComponent === null) {
       return;
     }
+
     this.#handleDestroy();
+
     remove(this.#waypointEditComponent);
     this.#waypointEditComponent = null;
+
     document.body.removeEventListener('keydown', this.#ecsKeyDownHandler);
   }
+
 
   #ecsKeyDownHandler = (evt) => {
     if (isEsc(evt)) {

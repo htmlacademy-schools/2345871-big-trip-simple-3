@@ -4,18 +4,18 @@ const FilterType = {
   PAST: 'past'
 };
 
+const FilterTypeDescriptions = {
+  [FilterType.EVERYTHING]: 'EVERYTHING',
+  [FilterType.PAST]: 'PAST',
+  [FilterType.FUTURE]: 'FUTURE',
+};
+
 const SortType = {
   DAY: 'day',
   EVENT: 'event',
   TIME: 'time',
   PRICE: 'price',
   OFFER: 'offer'
-};
-
-const FilterTypeDescriptions = {
-  [FilterType.EVERYTHING]: 'EVERYTHING',
-  [FilterType.PAST]: 'PAST',
-  [FilterType.FUTURE]: 'FUTURE',
 };
 
 const SortTypeDescription = {
