@@ -7,8 +7,8 @@ import {FilterType, SortType, UpdateType, UserAction} from '../const.js';
 import NewWaypointPresenter from './new-waypoint-presenter.js';
 import LoadingView from '../view/loading-view.js';
 import UiBlocker from '../framework/ui-blocker/ui-blocker.js';
-import {sorts} from '../sort.js';
-import {filter} from '../utils.js';
+import {sorts} from '../utils/sort.js';
+import {filter} from '../utils/utils.js';
 
 const TimeLimit = {
   LOWER_LIMIT: 350,

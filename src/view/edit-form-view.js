@@ -1,4 +1,4 @@
-import {getDateYears, getItemFromItemsById, makeFirstLetterUpperCase} from '../utils.js';
+import {getDateYears, getItemFromItemsById, makeFirstLetterUpperCase} from '../utils/utils.js';
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.css';
 import AbstractStatefulView from '../framework/view/abstract-stateful-view.js';

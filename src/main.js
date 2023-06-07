@@ -30,23 +30,29 @@ const boardPresenter = new BoardPresenter({
   modelFilter,
   onNewWaypointDestroy: handleNewTaskFormClose
 });
+
 const filterPresenter = new FilterPresenter({
   filterContainer: siteHeaderElement,
   modelFilter,
   modelWaypoints
 });
+
 const newWaypointButtonComponent = new NewWaypointButton({
   onClick: handleNewTaskButtonClick
 });
+
 function handleNewTaskFormClose() {
   newWaypointButtonComponent.element.disabled = false;
 }
+
 function handleNewTaskButtonClick() {
   boardPresenter.createWaypoint();
   newWaypointButtonComponent.element.disabled = true;
 }
+
 filterPresenter.init();
 boardPresenter.init();
+
 modelWaypoints.init()
   .finally(() => {
     render(newWaypointButtonComponent, placeForButton);
