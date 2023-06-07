@@ -34,4 +34,4 @@ const getDateYears = (date) => dayjs(date).format(EVENT_YEARS_FORMAT);
 export {getRandomItemFromItems, getRandomPrice, getRandomSliceFromItems,
   getRandomId, createIDgenerator, getRandomArrayElement, getDateWithoutT,
   getDateDayAndMo, getDateWithT, getTime, getItemFromItemsById, getDateYears,
-  isEsc,changeType,isTripDateBeforeToday};
+  isEsc, changeType, isTripDateBeforeToday};
