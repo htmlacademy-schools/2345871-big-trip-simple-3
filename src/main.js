@@ -4,9 +4,9 @@ import ModelOffers from './model/model-offers';
 import ModelDestinations from './model/model-destinations';
 import ModelFilters from './model/model-filter.js';
 import FilterPresenter from './presenter/filter-presenter.js';
-import {render} from './render.js';
 import NewWaypointButton from './view/new-waypoint-button-view.js';
 import WaypointsApiService from './waypoints-api-service.js';
+import {render} from './render.js';
 
 const siteHeaderElement = document.querySelector('.trip-controls__filters');
 const container = document.querySelector('.trip-events');
@@ -52,6 +52,7 @@ function handleNewTaskButtonClick() {
 
 filterPresenter.init();
 boardPresenter.init();
+
 modelWaypoints.init()
   .finally(() => {
     render(newWaypointButtonComponent, placeForButton);
