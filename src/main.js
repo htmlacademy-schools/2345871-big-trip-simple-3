@@ -6,7 +6,7 @@ import ModelFilters from './model/model-filter.js';
 import FilterPresenter from './presenter/filter-presenter.js';
 import NewWaypointButton from './view/new-waypoint-button-view.js';
 import WaypointsApiService from './waypoints-api-service.js';
-import {render} from './render.js';
+import {render} from './framework/render.js';
 
 const siteHeaderElement = document.querySelector('.trip-controls__filters');
 const container = document.querySelector('.trip-events');
