@@ -1,4 +1,4 @@
-import {render, RenderPosition} from '../render.js';
+import {render, RenderPosition} from '../framework/render.js';
 import {UpdateType, UserAction} from '../const.js';
 import EditForm from '../view/edit-form-view.js';
 import {remove} from '../framework/render.js';
